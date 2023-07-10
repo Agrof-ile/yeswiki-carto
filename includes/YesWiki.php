@@ -1142,7 +1142,7 @@ class Wiki
         $this->request = Request::createFromGlobals();
 
         // Is this a special page ?
-        if (in_array($tag, ['api', 'doc'])) {
+        if (in_array($tag, ['api', 'doc', 'carto'])) {
             $this->RunSpecialPages();
         } else {
             $this->SetPage($this->LoadPage($tag, (isset($_REQUEST['time']) ? $_REQUEST['time'] : '')));
