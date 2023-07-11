@@ -2,14 +2,14 @@
 <head>
   <meta name="viewport" content="width=device-width" />
 
-  <title>Documentation</title>
+  <title>Cartographie</title>
 
   <link rel="stylesheet" href='styles/vendor/docsify/vue-theme-modified.min.css'>
   <link rel="stylesheet" href='styles/documentation.css'>
 </head>
 
 <body>
-  <div id="app"></div>
+  <!--<div id="app"></div>
 
   <script>
     var locale = {{ locale|json_encode|raw }};
@@ -23,6 +23,10 @@
   <script src="javascripts/documentation.js"></script>
   <script src="javascripts/vendor/docsify/plugins/search.js"></script>
   <script src="javascripts/vendor/docsify/plugins/zoom-image.min.js"></script>
-  <script src="javascripts/vendor/docsify/plugins/docsify-copy-code.min.js"></script>
+  <script src="javascripts/vendor/docsify/plugins/docsify-copy-code.min.js"></script>-->
+  <div id="map" style="width: 1000px; height: 800px">
+    <script src="javascripts/carto.js"></script>
+		<!--<script defer="defer" src="carto.js"></script>-->
+	</div>
 </body>
 </html>

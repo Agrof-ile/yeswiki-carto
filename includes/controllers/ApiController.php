@@ -100,6 +100,18 @@ class ApiController extends YesWikiController
         return new Response($output);
     }
 
+    // /**
+    //  * @Route("/api/carto/form",methods={"GET"})
+    //  */
+    // public function get_form_res()
+    // {
+    //     // $this->denyAccessUnlessAdmin();
+    //     // $form = $_GET["/data/form_res.json"];
+    //     echo("Salut");
+    //     $form = 0;
+    //     return new ApiResponse($form);
+    // }
+
     /**
      * @Route("/api/users/{userId}",methods={"GET"})
      */

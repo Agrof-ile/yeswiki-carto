@@ -1,3 +1,7 @@
+# Fork data
+data/
+javascripts/carto.js
+
 # Composer
 vendor
 # Node modules
