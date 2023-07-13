@@ -37,4 +37,14 @@ class ApiController extends YesWikiController
         // $action = $request->get('action') ?? 'hello';
         // return new ApiResponse([$action => $name]);
     }
+
+    /**
+     * @Route("/api/carto/map_form_id", options={"acl":{"public"}})
+     */
+    public function get_map_form_id(Request $request)
+    {
+        $str = file_get_contents("tools/carto/map_form_id.json");
+        $json = json_decode($str, true);
+        return new ApiResponse($json);
+    }
 }
