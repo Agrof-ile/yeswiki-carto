@@ -43,6 +43,9 @@ private/backups/*
 
 # tools
 tools/*
+# Carto fork
+!tools/carto
+# YesWiki's stuff
 !tools/README.md
 !tools/autoupdate
 !tools/aceditor/*
