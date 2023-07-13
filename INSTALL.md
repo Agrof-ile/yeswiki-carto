@@ -1,3 +1,18 @@
+///////////// Edit by Nicolas /////////////
+# YesWiki Carto fork installation on a VPS
+Requirements : `git`, `composer`, `MySQL`/`MariaDB` database, `Apache`, and have `data/` and `carto.js` files.
+- Go to your VPS's main web directory
+- `git clone https://github.com/Weltskaiser/yeswiki-carto.git`
+- Go inside the created folder
+- `git checkout dev/carto`
+- `composer install`
+- Paste the `data/` folder at the root of the website folder
+- Add the `carto.js` file in the `javascripts/` folder
+- Run it with Apache
+Go to your website, fill the info asked. For YesWiki to work you must create a MySQL/MariaDB database and a user having all rights on it.
+Check your main page works. Then go to `<your_website_url>/?carto` and check a map is displaying geometry data.
+///////////// End of the edit /////////////
+
 # YesWiki installation
 Not much to it (as long as it works, ahem). Unpack/upload the distribution files
 into a directory that can be accessed via the web. Then go to the corresponding URL.  
