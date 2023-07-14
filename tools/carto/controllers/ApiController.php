@@ -11,34 +11,6 @@ use YesWiki\Core\YesWikiController;
 class ApiController extends YesWikiController
 {
     /**
-     * @Route("/api/carto/form", options={"acl":{"public"}})
-     */
-    public function sayHello2form(Request $request)
-    {
-        // $form = $_GET["/data/form_res.json"];
-        $str = file_get_contents("data/form_res.json");
-        $json = json_decode($str, true);
-        return new ApiResponse($json);
-        // echo("Flûte");
-        // $action = $request->get('action') ?? 'hello';
-        // return new ApiResponse([$action => $name]);
-    }
-
-    /**
-     * @Route("/api/carto/shp/{name}", options={"acl":{"public"}})
-     */
-    public function sayHello2shp(Request $request, $name)
-    {
-        // $form = $_GET["/data/form_res.json"];
-        $str = file_get_contents(sprintf("data/shp/%s.zip", $name));
-        $json = json_decode($str, true);
-        return new ApiResponse($json);
-        // echo("Flûte");
-        // $action = $request->get('action') ?? 'hello';
-        // return new ApiResponse([$action => $name]);
-    }
-
-    /**
      * @Route("/api/carto/map_form_id", options={"acl":{"public"}})
      */
     public function get_map_form_id(Request $request)
@@ -46,5 +18,14 @@ class ApiController extends YesWikiController
         $str = file_get_contents("tools/carto/map_form_id.json");
         $json = json_decode($str, true);
         return new ApiResponse($json);
+    }
+
+    /**
+     * @Route("/api/carto/ruzip", options={"acl":{"public"}})
+     */
+    public function remove_underscore_zip(Request $request)
+    {
+        $output = shell_exec("tools/carto/controllers/ruzip.sh");
+        return new ApiResponse($output);
     }
 }
