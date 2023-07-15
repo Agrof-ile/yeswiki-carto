@@ -6,12 +6,19 @@ Requirements : `git`, `composer`, `MySQL`/`MariaDB` database, `Apache`, and have
 - Go inside the created folder
 - `git checkout dev/carto`
 - `composer install`
-- Paste the `data/` folder at the root of the website folder
-- Add the `carto.js` file in the `javascripts/` folder
+- `chmod 777 .`
+- `chmod 777 cache`
+- `chmod 777 files`
+- `chmod +x tools/carto/controllers/ruzip.sh`
+- Add the `carto.js` file (the bundle containing a Leaflet map code) in the `javascripts/` folder
 - Run it with Apache
-Go to your website, fill the info asked. For YesWiki to work you must create a MySQL/MariaDB database and a user having all rights on it.
-Check your main page works. Then go to `<your_website_url>/?carto` and check a map is displaying geometry data.
+Now, time to test.
+- Go to your website, fill the info asked to create your website. Note that for YesWiki to work you must create a MySQL/MariaDB database and a user having all rights on it.
+- Check your main page works. Then go to `<your_website_url>/?carto` and check a Leaflet map appears.
+- Then try to log in as WikiAdmin. Create a random form containing at least a file upload field (asking for a SHP as ZIP) and a geolocation field. When adding the file upload field, set unique id as `shp_file`. Check your form id in the main forms (it should be something like 5). Open `tools/carto/map_form_id.json` and replace the value in the field `map_form_id` (it should be set by default at 3) by your actual form id.
+- Create a random account and fill the form with different data. Once the form completed, YesWiki shows you your "fiche", that is one answer to the form that you own and can modify. By default, everyone on the web can see without beeing logged in. Look at your "fiche" and check your file has been uploaded. Go back to `<your_website_url>/?carto` and look if your SHPs are displaying!
 ///////////// End of the edit /////////////
+
 
 # YesWiki installation
 Not much to it (as long as it works, ahem). Unpack/upload the distribution files
