@@ -21,6 +21,16 @@ class ApiController extends YesWikiController
     }
 
     /**
+     * @Route("/api/carto/props_titles", options={"acl":{"public"}})
+     */
+    public function get_props_titles(Request $request)
+    {
+        $str = file_get_contents("tools/carto/props_titles.json");
+        $json = json_decode($str, true);
+        return new ApiResponse($json);
+    }
+
+    /**
      * @Route("/api/carto/ruzip", options={"acl":{"public"}})
      */
     public function remove_underscore_zip(Request $request)
