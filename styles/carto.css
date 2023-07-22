@@ -6,3 +6,12 @@
 p {
         text-align: center;
 }
+
+.flex-container {
+        display: flex;
+}
+
+.dropdown-content {
+        display: none;
+        color: blue;
+}
