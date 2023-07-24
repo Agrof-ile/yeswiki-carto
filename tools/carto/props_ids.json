@@ -1,0 +1,16 @@
+{
+	"card_name" : "bf_nomfiche",
+	"type_of_land": {
+		"list_id": "Listetype",
+		"prop_id": "type_foncier",
+		"options_ids": {
+			"parcelle_cultivee": "#f8c423",
+			"espace_vert": "#6fa8dc",
+			"espace_naturel": "#62c637",
+			"autre": "#165c6b",
+			"": "#165c6b"
+		}
+	},
+	"area": "surface_numerique",
+	"shp_file": "shp_file"
+}
