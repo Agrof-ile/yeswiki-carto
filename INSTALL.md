@@ -1,6 +1,7 @@
 ///////////// Edit by Nicolas /////////////
-# YesWiki Carto fork installation on a VPS
-Requirements : `git`, `composer`, `MySQL`/`MariaDB` database, `Apache`, and have `data/` and `carto.js` files.
+# YesWiki Carto fork installation
+## On the VPS
+Requirements : `git`, `composer`, `MySQL`/`MariaDB` database, `Apache`, and have generated the `carto.js` file.
 - Go to your VPS's main web directory
 - `git clone https://github.com/Weltskaiser/yeswiki-carto.git`
 - Go inside the created folder
@@ -15,8 +16,19 @@ Requirements : `git`, `composer`, `MySQL`/`MariaDB` database, `Apache`, and have
 Now, time to test.
 - Go to your website, fill the info asked to create your website. Note that for YesWiki to work you must create a MySQL/MariaDB database and a user having all rights on it.
 - Check your main page works. Then go to `<your_website_url>/?carto` and check a Leaflet map appears.
-- Then try to log in as WikiAdmin. Create a random form containing at least a file upload field (asking for a SHP as ZIP) and a geolocation field. When adding the file upload field, set unique id as `shp_file`. Check your form id in the main forms (it should be something like 5). Open `tools/carto/map_form_id.json` and replace the value in the field `map_form_id` (it should be set by default at 3) by your actual form id.
-- Create a random account and fill the form with different data. Once the form completed, YesWiki shows you your "fiche", that is one answer to the form that you own and can modify. By default, everyone on the web can see without beeing logged in. Look at your "fiche" and check your file has been uploaded. Go back to `<your_website_url>/?carto` and look if your SHPs are displaying!
+
+## On the website's interface
+Then try to log in as WikiAdmin. Create a random form containing at least:
+- a file upload field (asking for a SHP as ZIP);
+- a geolocation field;
+- a surface field;
+- a type of land field, with options from a YesWiki list.
+You can give them the unique identifier you want, as long as you make sure the unique identifiers are the same than those in the `tools/carto/props_ids.json` file. The file contains more data about the `type_of_land` property: make sure the list name, the property id and the options keys ids follow what you've created from the website's interface when creating the form. WARNING : YesWiki removes the capitalization of the letters after the first one in the list identifiers: if you create a list `ListeType`, its identifier will be `Listetype` and this value should be in the `tools/carto/props_ids.json` file.
+
+Now:
+- Check your form id in the main forms page (it should be something like 5). Open `tools/carto/map_form_id.json` and replace the value in the field `map_form_id` (it should be set by default at 3) by your actual form id.
+- Create a random account and fill the form with different data. Once the form completed, YesWiki shows you your card ("fiche"), that is one answer to the form that you own and can modify. By default, no one on the web can see it without beeing logged in and having rights on it (by default the owner and the administrator accounts). Look at your "fiche" and check your file has been uploaded.
+- Log in as admin, go back to `<your_website_url>/?carto` and look if your SHPs are displaying!
 ///////////// End of the edit /////////////
 
 
