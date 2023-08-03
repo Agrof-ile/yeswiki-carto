@@ -7,9 +7,8 @@ Requirements : `git`, `composer`, `MySQL`/`MariaDB` database, `Apache`, and have
 - Go inside the created folder
 - `git checkout dev/carto`
 - `composer install`
-- `chmod 777 .`
-- `chmod 777 cache`
-- `chmod 777 files`
+- `chown www-data` and `chmod 700` the following directories: `.`, `cache`, `files`, `private`
+- Make sure the `private` directory cannot be accessed from the Internet (Apache configuration or `.htaccess` file)
 - `chmod +x tools/carto/controllers/ruzip.sh`
 - Add the `carto.js` file (the bundle containing a Leaflet map code) in the `javascripts/` folder
 - Run it with Apache
