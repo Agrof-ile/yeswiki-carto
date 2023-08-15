@@ -1,7 +1,7 @@
 {
 	"card_name" : "bf_nomfiche",
 	"type_of_land": {
-		"list_id": "Listetype",
+		"list_id": "ListeType",
 		"prop_id": "type_foncier",
 		"options_ids": {
 			"parcelle_cultivee": "#f8c423",
