@@ -9,6 +9,12 @@ p {
 
 .flex-container {
         display: flex;
+        margin: auto;
+        width: 80%;
+}
+
+#filters {
+        display: block
 }
 
 .dropdown-content {
