@@ -28,13 +28,13 @@
 {% block display_entries %}
   {% set imWidth = 150 %}
   {% set imHeight = 100 %}
-  {% set firstTokenCrop = csrfToken("GET api/images/cache/#{imWidth}/#{imHeight}/crop") %}
+  {% set firstTokenCrop = csrfToken("POST api/images/cache/#{imWidth}/#{imHeight}/crop") %}
   <Bazar-Table :currentusername="{{ currentUserName|json_encode }}" :params="params" :entries="entriesToDisplay" :ready="ready" :root="$root" isadmin="{{ hasAcl("@admins")|json_encode }}">
-    <template #header="{displayedEntries,BazarTable}"></template>
-    <template #spinnerloader="{displayedEntries,BazarTable}">
+    <template #header="{BazarTable}"></template>
+    <template #spinnerloader="{BazarTable}">
       <spinner-loader v-if="!BazarTable.fastSearch && (isLoading || !ready)" class="overlay super-overlay" :height="500"></spinner-loader>
     </template>
-    <template #footer="{displayedEntries,BazarTable}"></template>
+    <template #footer="{BazarTable}"></template>
     <template #deletecheckbox="{targetId,itemId,disabled}">
       <td>
         {% set id = "`selectline_${targetId}_${itemId}`" %}
@@ -45,8 +45,7 @@
             :data-itemid="disabled ? null : itemId"
             type="checkbox"
             :id="{{id}}" 
-            :name="{{id}}" 
-            data-csrftoken="to-be-defined"
+            :name="{{id}}"
             value="">
           <span></span>
         </label>
@@ -119,10 +118,10 @@
       </template>
       {#- supported fieldtype empty,link,email,image -#}
       <template v-if="addLink">
-        <a :href="`${url}/iframe`" v-html="anchorData" class="modalbox" data-size="modal-lg" data-iframe="1" :title="anchorData"></a>
+        <a :href="`${url}/iframe`" v-html="anchorData" class="modalbox" data-header="false" data-size="modal-lg" data-iframe="1" :title="anchorData"></a>
       </template>
       <template v-else-if="fieldtype === 'link'">
-        <a :href="anchorData" v-html="anchorData" class="modalbox" data-size="modal-lg" data-iframe="1"></a>
+        <a :href="anchorData" v-html="anchorData" class="modalbox" data-header="false" data-size="modal-lg" data-iframe="1"></a>
       </template>
       <template v-else-if="fieldtype === 'email' && anchorData.length > 0">
         <a :href="`mailto:${anchorData}`" v-html="anchorData"></a>
@@ -136,7 +135,7 @@
           :onError="`urlImageResizedOnError({id_fiche:'${entryId}',url:'${wiki.url(entryId)}',['${fieldName}']:'${anchorData}'},'${fieldName}',{{ imWidth }},{{ imHeight }},'crop','{{ firstTokenCrop|e('html') }}')`"/>
       </template>
       <template v-else-if="fieldtype === 'urlmodal' && anchorData.length > 0">
-        <a :href="url" v-html="anchorData" :title="anchorData" class="modalbox" data-size="modal-lg" data-iframe="1"></a>
+        <a :href="url" v-html="anchorData" :title="anchorData" class="modalbox" data-header="false" data-size="modal-lg" data-iframe="1"></a>
       </template>
       <template v-else-if="fieldtype === 'urlnewwindow' && anchorData.length > 0">
         <a :href="url" v-html="anchorData" :title="anchorData" target="blank"></a>

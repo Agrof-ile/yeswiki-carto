@@ -227,11 +227,11 @@ class ThemeManager
 
         // themes folder (used by {{update}})
         if (is_dir('themes')) {
-            $this->templates = array_merge($this->templates, $this->utils->searchTemplateFiles('themes'));
+            $this->templates = array_merge($this->templates, $this->utils->searchTemplateFiles('themes',false));
         }
         // custom themes folder
         if (is_dir('custom/themes')) {
-            $this->templates = array_replace_recursive($this->templates, $this->utils->searchTemplateFiles('custom/themes'));
+            $this->templates = array_replace_recursive($this->templates, $this->utils->searchTemplateFiles('custom/themes',true));
         }
         ksort($this->templates);
 
@@ -321,21 +321,6 @@ class ThemeManager
         } else {
             return '';
         }
-    }
-
-    /**
-     * get squelettes and styles used in js for theme selector
-     * @return array ['squelettes'=>array,'styles'=>array]
-     */
-    public function getSquelettesAndStylesForJs(): array
-    {
-        $squelettes = [];
-        $styles = [];
-        foreach ($this->getTemplates() as $templateName => $template) {
-            $squelettes[$templateName] = array_values($template['squelette']);
-            $styles[$templateName] = array_values($template['style']);
-        }
-        return compact(['squelettes','styles']);
     }
 
     public function getTemplates(): array
